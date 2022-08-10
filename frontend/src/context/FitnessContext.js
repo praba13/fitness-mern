@@ -12,6 +12,10 @@ export const fitnessReducer = (state, action) => {
       return {
         fitness: [action.payload, ...state.fitness]
       };
+    case 'DELETE_FITNESS':
+      return {
+        fitness: state.fitness.filter((w) => w._id !== action.payload._id)
+      };
     default:
       return state;
   }
