@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useFitnessContext } from '../hooks/useFitnessContext';
 
 const FitnessForm = () => {
+  const { dispatch } = useFitnessContext();
   const [title, setTitle] = useState('');
   const [load, setLoad] = useState('');
   const [reps, setReps] = useState('');
@@ -29,6 +31,7 @@ const FitnessForm = () => {
       setLoad('');
       setReps('');
       console.log('new fitness added:', json);
+      dispatch({ type: 'CREATE_FITNESS', payload: json });
     }
   };
 

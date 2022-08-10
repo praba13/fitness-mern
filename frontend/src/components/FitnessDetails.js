@@ -1,18 +1,18 @@
 import React from 'react';
 
-const FitnessDetails = ({ fitness }) => {
+const FitnessDetails = ({ fit }) => {
   return (
     <div className='fitness-details'>
-      <h4>{fitness.title}</h4>
+      <h4>{fit.title}</h4>
       <p>
         <strong>Load (kg):</strong>
-        {fitness.load}
+        {fit.load}
       </p>
       <p>
         <strong>Number of reps: :</strong>
-        {fitness.reps}
+        {fit.reps}
       </p>
-      <p>{fitness.createdAt}</p>
+      <p>{fit.createdAt}</p>
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useFitnessContext } from '../hooks/useFitnessContext';
 import FitnessDetails from '../components/FitnessDetails';
 import FitnessForm from '../components/FitnessForm';
 
 const Home = () => {
-  const [fitnesss, setFitnesss] = useState(null);
+  const { fitness, dispatch } = useFitnessContext();
 
   useEffect(() => {
     const fetchFitness = async () => {
@@ -12,19 +13,17 @@ const Home = () => {
       //console.log('JSON : ' + json);
 
       if (response.ok) {
-        setFitnesss(json);
+        dispatch({ type: 'SET_FITNESS', payload: json });
       }
     };
     fetchFitness();
-  }, []);
-  //onsole.log(fiteness);
+  }, [dispatch]);
+
   return (
     <div className='home'>
       <div className='fitnesss'>
-        {fitnesss &&
-          fitnesss.map((fitness) => (
-            <FitnessDetails fitness={fitness} key={fitness._id} />
-          ))}
+        {fitness &&
+          fitness.map((fit) => <FitnessDetails fit={fit} key={fit._id} />)}
       </div>
       <FitnessForm />
     </div>
