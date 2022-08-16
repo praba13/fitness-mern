@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
 const fitnessRoutes = require('./routes/fitness');
+const userRoutes = require('./routes/user');
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/api/fitness', fitnessRoutes);
+app.use('/api/user', userRoutes);
 
 const PORT = process.env.PORT || 4001;
 
